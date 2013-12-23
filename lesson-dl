@@ -1,0 +1,7 @@
+#!/bin/zsh
+until cd ~/Movies/dt/dotinstall.com/lessons/"$1" && touch test.mp4 test.part && rm *.mp4 *.part && cat [0-9]* [0-9]* > filename.txt && grep videoId filename.txt > videoid.txt && sed "s|videoId: '|http://jp.youtube.com/watch?v=|" videoid.txt > url.txt && sed "s/',//g" url.txt > url2.txt && youtube-dl -A -t -a url2.txt && mkdir -p ~/Movies/dt/"$1" && mv *.mp4 ~/Movies/dt/"$1" && cd ~/Movies/dt/"$1" && find `pwd` -maxdepth 1 -mindepth 1 | grep -v "\/\." > mylist && mplayer -playlist mylist -x 680 -y 360 -geometry +1+40
+
+do
+    echo "ダウンロードが失敗しました｡もう一度ダウンロードします｡終了する場合は､Ctrl+Cを押してください｡"
+
+done
